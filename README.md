@@ -1,21 +1,44 @@
-# ShopImpact Conscious Shopping Dashboard
+<p align="center">
+  <img src="assets/readme/shopimpact-banner.gif" alt="ShopImpact — a conscious shopping journal. Track spending, explore impact, and build better habits." width="100%">
+</p>
 
-ShopImpact is a Python and Streamlit shopping tracker with separate accounts, saved purchase histories, monthly goals and estimates based on published emissions data. It implements Scenario 1 of the Year 1 Python Programming assessment.
+<p align="center">
+  <strong>Understand your shopping. Make your next choice more thoughtful.</strong><br>
+  A Python + Streamlit app for purchase tracking, monthly goals, and estimated environmental impact.
+</p>
 
-## Run in VS Code
+<p align="center">
+  <a href="#features">Explore features</a> ·
+  <a href="#screenshots">See the app</a> ·
+  <a href="#run-in-vs-code">Run locally</a> ·
+  <a href="output/pdf/ShopImpact_10_Page_Explanation.pdf">Read the 10-page guide</a>
+</p>
 
-Open this entire SA PYTHON folder and run these commands in its PowerShell terminal:
+<p align="center">
+  <a href="https://github.com/kavin-beep/ShopImpact/actions/workflows/tests.yml"><img src="https://github.com/kavin-beep/ShopImpact/actions/workflows/tests.yml/badge.svg" alt="GitHub Actions test status"></a>
+</p>
 
-```powershell
-.\.venv\Scripts\python.exe -m pip install -r requirements.txt --no-cache-dir
-.\.venv\Scripts\python.exe -m streamlit run app.py --server.address 127.0.0.1
-```
+<p align="center"><sub>Prefer a still image? <a href="assets/readme/shopimpact-banner-static.png">View the static banner</a>.</sub></p>
 
-On another computer, install Python 3.12 and first run `py -3.12 -m venv .venv`. VS Code tasks and the Run ShopImpact debug configuration are included. Debugging requires Microsoft's Python and Python Debugger extensions.
+| Built with | Persistence | Checks | Release status |
+| :---: | :---: | :---: | :---: |
+| Python 3.12 · Streamlit | SQLite / Neon PostgreSQL | 79 tests passed locally · 3 Oct 2026 | Public deployment pending |
 
-Open the URL printed in the terminal, normally http://localhost:8501. Create your own account, save the recovery code privately, and sign in. Accounts start empty; no demo purchases are loaded. Closing or refreshing the page signs you out but does not delete saved purchases. Sessions expire after 12 hours.
+ShopImpact turns a purchase list into a useful shopping journal: record what you buy, see spending patterns, explore rough emissions estimates, and consider reuse or repair. It implements **Scenario 1** of the Year 1 Python Programming assessment.
+
+> **An estimate, with a clear purpose.** CO₂e means carbon dioxide equivalent. ShopImpact estimates impact using price × category factor; it does not measure a specific product's actual emissions.
+
+---
 
 ## Features
+
+| Your shopping journal | Your bigger picture | Your next thoughtful choice |
+| :--- | :--- | :--- |
+| Log, find, edit and back up purchases | Track spending, estimated CO₂e and six-month trends | Explore alternatives, earn badges and build habits |
+| Separate accounts and saved preferences | Monthly goals and accessible contrast settings | Reuse, repair, rotating tips and Turtle artwork |
+
+<details>
+<summary><strong>View the complete feature list</strong></summary>
 
 - Registration with email, email-or-username/password sign-in, sign-out and recovery-code password reset.
 - Existing accounts can add or change their sign-in email after confirming their current password.
@@ -29,6 +52,44 @@ Open the URL printed in the terminal, normally http://localhost:8501. Create you
 - Category alternatives, named reuse/repair options with official links, and price-based comparison with visible assumptions.
 - Search, month/category filters, date/price/impact sorting, filtered CSV downloads, editing, deletion and JSON backup/restore.
 - Confirmed account deletion and protection against conflicting edits in multiple tabs.
+
+</details>
+
+## Screenshots
+
+A look inside ShopImpact. Screenshots use fictional purchases in an isolated test account.
+
+| A welcoming start | Your monthly overview |
+| :---: | :---: |
+| ![ShopImpact sign-in screen](docs/screenshots/sign-in.png) | ![Monthly spending and estimated emissions dashboard](docs/screenshots/dashboard.png) |
+| **Spending patterns over time** | **Celebrate thoughtful choices** |
+| ![Six-month spending insights](docs/screenshots/insights.png) | ![Achievements and Turtle leaf artwork](docs/screenshots/rewards.png) |
+
+<details>
+<summary><strong>Mobile, purchase history and high contrast</strong></summary>
+
+| Mobile sign-in | Mobile dashboard |
+| :---: | :---: |
+| <img src="docs/screenshots/mobile-sign-in.png" alt="Mobile sign-in page" width="260"> | <img src="docs/screenshots/mobile.png" alt="Mobile dashboard with collapsed sidebar" width="260"> |
+
+![Searchable purchase history](docs/screenshots/history.png)
+
+![High contrast appearance](docs/screenshots/high-contrast.png)
+
+</details>
+
+## Run in VS Code
+
+Open this entire SA PYTHON folder and run these commands in its PowerShell terminal:
+
+```powershell
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt --no-cache-dir
+.\.venv\Scripts\python.exe -m streamlit run app.py --server.address 127.0.0.1
+```
+
+On another computer, install Python 3.12 and first run `py -3.12 -m venv .venv`. VS Code tasks and the Run ShopImpact debug configuration are included. Debugging requires Microsoft's Python and Python Debugger extensions.
+
+Open the URL printed in the terminal, normally http://localhost:8501. Create your own account, save the recovery code privately, and sign in. Accounts start empty; no demo purchases are loaded. Closing or refreshing the page signs you out but does not delete saved purchases. Sessions expire after 12 hours.
 
 ## Data and calculations
 
@@ -51,6 +112,16 @@ These are **rough reference estimates**. US sector averages, broad category mapp
 | tools/draw_rewards.py | Turtle leaf generation and optional desktop preview |
 | tests/ | Disposable account/UI tests and synthetic purchase fixtures |
 | docs/ | Design, methodology, test evidence, deployment and assessment checklist |
+
+```mermaid
+flowchart LR
+    A[Your account] --> B[Log a purchase]
+    B --> C[Python calculations]
+    C --> D[Dashboard and Insights]
+    B --> E[(SQLite or PostgreSQL)]
+    E --> D
+    D --> F[CSV reports and JSON backups]
+```
 
 ## Storage and privacy
 
@@ -104,13 +175,3 @@ Real participant feedback, assessor access and the final submission PDF remain p
 - [Streamlit database guidance](https://docs.streamlit.io/develop/concepts/connections/connecting-to-data)
 - [Python Turtle](https://docs.python.org/3/library/turtle.html)
 - [OWASP password storage](https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html)
-
-## Screenshots
-
-![Account sign-in](docs/screenshots/sign-in.png)
-
-![Monthly dashboard](docs/screenshots/dashboard.png)
-
-![Six-month insights](docs/screenshots/insights.png)
-
-![Chart and Turtle reward](docs/screenshots/rewards.png)

@@ -1,0 +1,8 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {"label": "ShopImpact: install dependencies", "type": "process", "command": "${workspaceFolder}/.venv/Scripts/python.exe", "args": ["-m", "pip", "install", "-r", "requirements.txt"], "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []},
+    {"label": "ShopImpact: run", "type": "process", "command": "${workspaceFolder}/.venv/Scripts/python.exe", "args": ["-m", "streamlit", "run", "app.py"], "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []},
+    {"label": "ShopImpact: test", "type": "process", "command": "${workspaceFolder}/.venv/Scripts/python.exe", "args": ["-m", "unittest", "discover", "-s", "tests", "-v"], "options": {"cwd": "${workspaceFolder}"}, "group": "test", "problemMatcher": []}
+  ]
+}

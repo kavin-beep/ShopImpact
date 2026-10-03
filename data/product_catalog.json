@@ -1,0 +1,114 @@
+{
+  "New clothing": {
+    "multiplier": "0.001526630338",
+    "lower_impact": false,
+    "alternatives": [
+      "Try a local second-hand clothing shop",
+      "Repair or restyle clothes you already own",
+      "Borrow occasion wear"
+    ],
+    "compare_with": "Second-hand clothing",
+    "factor_usd2022": "0.12",
+    "source_code": "315990",
+    "source_title": "Apparel Accessories and Other Apparel Manufacturing",
+    "mapping_note": "Broad apparel-sector proxy; not a garment-specific lifecycle assessment."
+  },
+  "Second-hand clothing": {
+    "multiplier": "0.001526630338",
+    "lower_impact": true,
+    "alternatives": [
+      "Organise a clothing swap",
+      "Look for durable pre-owned garments",
+      "Repair before replacing"
+    ],
+    "compare_with": "New clothing",
+    "factor_usd2022": "0.12",
+    "source_code": "315990",
+    "source_title": "Apparel Accessories and Other Apparel Manufacturing",
+    "mapping_note": "Uses the same apparel proxy as new clothing. No unverified second-hand emissions discount is applied."
+  },
+  "Leather footwear": {
+    "multiplier": "0.003587581293",
+    "lower_impact": false,
+    "alternatives": [
+      "Ask a local cobbler about repair",
+      "Look for pre-owned shoes in good condition",
+      "Compare durability and material information"
+    ],
+    "compare_with": "Repair services",
+    "factor_usd2022": "0.282",
+    "source_code": "316210",
+    "source_title": "Footwear Manufacturing",
+    "mapping_note": "Broad footwear proxy; not leather-specific."
+  },
+  "New electronics": {
+    "multiplier": "0.000737871330",
+    "lower_impact": false,
+    "alternatives": [
+      "Consider a refurbished device with a warranty",
+      "Repair your current device",
+      "Borrow equipment used only occasionally"
+    ],
+    "compare_with": "Refurbished electronics",
+    "factor_usd2022": "0.058",
+    "source_code": "334111",
+    "source_title": "Electronic Computer Manufacturing",
+    "mapping_note": "Computer-manufacturing proxy; other electronics can differ substantially."
+  },
+  "Refurbished electronics": {
+    "multiplier": "0.000737871330",
+    "lower_impact": true,
+    "alternatives": [
+      "Check repairability and warranty terms",
+      "Extend the life of your existing device",
+      "Buy only the specifications you need"
+    ],
+    "compare_with": "New electronics",
+    "factor_usd2022": "0.058",
+    "source_code": "334111",
+    "source_title": "Electronic Computer Manufacturing",
+    "mapping_note": "Uses the same computer proxy as new electronics. No unverified refurbishment discount is applied."
+  },
+  "Single-use household goods": {
+    "multiplier": "0.007365991379",
+    "lower_impact": false,
+    "alternatives": [
+      "Use a refill service where available",
+      "Reuse containers already at home",
+      "Choose durable items you will use repeatedly"
+    ],
+    "compare_with": "Reusable household goods",
+    "factor_usd2022": "0.579",
+    "source_code": "326160",
+    "source_title": "Plastics Bottle Manufacturing",
+    "mapping_note": "Plastic-bottle proxy; suitable only as a rough screening value for plastic household items."
+  },
+  "Reusable household goods": {
+    "multiplier": "0.007365991379",
+    "lower_impact": true,
+    "alternatives": [
+      "Reuse what you own before buying more",
+      "Choose repairable household items",
+      "Consider a local reuse shop"
+    ],
+    "compare_with": "Single-use household goods",
+    "factor_usd2022": "0.579",
+    "source_code": "326160",
+    "source_title": "Plastics Bottle Manufacturing",
+    "mapping_note": "Uses the same plastic-bottle proxy. Does not model material, lifetime or number of uses."
+  },
+  "Repair services": {
+    "multiplier": "0.001437576901",
+    "lower_impact": true,
+    "alternatives": [
+      "Ask a repair cafe for help",
+      "Maintain items to extend their life",
+      "Compare repair cost with replacement"
+    ],
+    "compare_with": "New clothing",
+    "factor_usd2022": "0.113",
+    "source_code": "811490",
+    "source_title": "Other Personal and Household Goods Repair and Maintenance",
+    "mapping_note": "Personal and household goods repair proxy; actual service and replacement parts may differ."
+  }
+}

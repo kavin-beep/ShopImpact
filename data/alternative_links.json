@@ -1,0 +1,29 @@
+{
+  "New clothing": [
+    {"name": "Patagonia Worn Wear", "url": "https://wornwear.patagonia.com/pages/faq", "note": "Used Patagonia clothing and trade-in information. Check regional availability."},
+    {"name": "Patagonia repair guides", "url": "https://wornwear.patagonia.com/pages/repairs", "note": "Care and repair guides can help extend the life of suitable garments."}
+  ],
+  "Second-hand clothing": [
+    {"name": "Patagonia Worn Wear", "url": "https://wornwear.patagonia.com/pages/faq", "note": "An example of a brand resale programme; check location and shipping before buying."}
+  ],
+  "Leather footwear": [
+    {"name": "VEJA repair services", "url": "https://www.veja-store.com/en_fr/veja-repair.html", "note": "Shoe repair at listed locations. Availability is regional; a local cobbler may be more practical."}
+  ],
+  "New electronics": [
+    {"name": "Cashify repair", "url": "https://www.cashify.in/repair", "note": "Consider repairing a suitable phone before replacing it. Check service coverage and warranty."},
+    {"name": "Cashify refurbished devices", "url": "https://www.cashify.in/offline-stores/cashify-store-nehru-place-in-delhi", "note": "One documented India store offering refurbished phones; check the current stock and terms."}
+  ],
+  "Refurbished electronics": [
+    {"name": "Cashify warranty policy", "url": "https://www.cashify.in/warranty-policy", "note": "Read the applicable warranty and exclusions before choosing a refurbished device or repair."}
+  ],
+  "Single-use household goods": [
+    {"name": "Klean Kanteen reusable bottles", "url": "https://www.kleankanteen.com/collections/non-insulated-water-bottles", "note": "A reusable stainless-steel option if you need a bottle. Reuse what you already own first."}
+  ],
+  "Reusable household goods": [
+    {"name": "Klean Kanteen reusable bottles", "url": "https://www.kleankanteen.com/collections/non-insulated-water-bottles", "note": "Compare durability, care requirements and local availability. No quantified carbon advantage is claimed."}
+  ],
+  "Repair services": [
+    {"name": "Cashify phone repair", "url": "https://www.cashify.in/repair", "note": "Phone repair options in supported locations in India."},
+    {"name": "Patagonia repair guides", "url": "https://wornwear.patagonia.com/pages/repairs", "note": "Garment repair guidance for suitable clothing."}
+  ]
+}

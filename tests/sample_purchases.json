@@ -1,0 +1,171 @@
+{
+  "version": "epa-2022-inr-reference-v2",
+  "currency": "INR",
+  "purchases": [
+    {
+      "id": "demo-1",
+      "product_type": "New clothing",
+      "price": "300.00",
+      "brand": "Demo shop 1",
+      "purchase_date": "2026-10-01",
+      "multiplier": "0.001526630338",
+      "estimated_co2": "0.46",
+      "methodology": "epa-2022-inr-reference-v2",
+      "source_code": "315990"
+    },
+    {
+      "id": "demo-2",
+      "product_type": "Second-hand clothing",
+      "price": "650.00",
+      "brand": "Demo shop 2",
+      "purchase_date": "2026-10-01",
+      "multiplier": "0.001526630338",
+      "estimated_co2": "0.99",
+      "methodology": "epa-2022-inr-reference-v2",
+      "source_code": "315990"
+    },
+    {
+      "id": "demo-3",
+      "product_type": "Leather footwear",
+      "price": "4500.00",
+      "brand": "Demo shop 3",
+      "purchase_date": "2026-10-01",
+      "multiplier": "0.003587581293",
+      "estimated_co2": "16.14",
+      "methodology": "epa-2022-inr-reference-v2",
+      "source_code": "316210"
+    },
+    {
+      "id": "demo-4",
+      "product_type": "New electronics",
+      "price": "12000.00",
+      "brand": "Demo shop 4",
+      "purchase_date": "2026-10-01",
+      "multiplier": "0.000737871330",
+      "estimated_co2": "8.85",
+      "methodology": "epa-2022-inr-reference-v2",
+      "source_code": "334111"
+    },
+    {
+      "id": "demo-5",
+      "product_type": "Refurbished electronics",
+      "price": "150.00",
+      "brand": "Demo shop 5",
+      "purchase_date": "2026-10-01",
+      "multiplier": "0.000737871330",
+      "estimated_co2": "0.11",
+      "methodology": "epa-2022-inr-reference-v2",
+      "source_code": "334111"
+    },
+    {
+      "id": "demo-6",
+      "product_type": "Single-use household goods",
+      "price": "750.00",
+      "brand": "Demo shop 6",
+      "purchase_date": "2026-10-01",
+      "multiplier": "0.007365991379",
+      "estimated_co2": "5.52",
+      "methodology": "epa-2022-inr-reference-v2",
+      "source_code": "326160"
+    },
+    {
+      "id": "demo-7",
+      "product_type": "Reusable household goods",
+      "price": "1000.00",
+      "brand": "Demo shop 7",
+      "purchase_date": "2026-10-01",
+      "multiplier": "0.007365991379",
+      "estimated_co2": "7.37",
+      "methodology": "epa-2022-inr-reference-v2",
+      "source_code": "326160"
+    },
+    {
+      "id": "demo-8",
+      "product_type": "Repair services",
+      "price": "200.00",
+      "brand": "Demo shop 8",
+      "purchase_date": "2026-10-01",
+      "multiplier": "0.001437576901",
+      "estimated_co2": "0.29",
+      "methodology": "epa-2022-inr-reference-v2",
+      "source_code": "811490"
+    },
+    {
+      "id": "demo-9",
+      "product_type": "New clothing",
+      "price": "250.00",
+      "brand": "Demo shop 9",
+      "purchase_date": "2026-10-01",
+      "multiplier": "0.001526630338",
+      "estimated_co2": "0.38",
+      "methodology": "epa-2022-inr-reference-v2",
+      "source_code": "315990"
+    },
+    {
+      "id": "demo-10",
+      "product_type": "Second-hand clothing",
+      "price": "500.00",
+      "brand": "Demo shop 10",
+      "purchase_date": "2026-10-01",
+      "multiplier": "0.001526630338",
+      "estimated_co2": "0.76",
+      "methodology": "epa-2022-inr-reference-v2",
+      "source_code": "315990"
+    },
+    {
+      "id": "demo-11",
+      "product_type": "Leather footwear",
+      "price": "2500.00",
+      "brand": "Demo shop 11",
+      "purchase_date": "2026-09-01",
+      "multiplier": "0.003587581293",
+      "estimated_co2": "8.97",
+      "methodology": "epa-2022-inr-reference-v2",
+      "source_code": "316210"
+    },
+    {
+      "id": "demo-12",
+      "product_type": "New electronics",
+      "price": "18000.00",
+      "brand": "Demo shop 12",
+      "purchase_date": "2026-09-01",
+      "multiplier": "0.000737871330",
+      "estimated_co2": "13.28",
+      "methodology": "epa-2022-inr-reference-v2",
+      "source_code": "334111"
+    },
+    {
+      "id": "demo-13",
+      "product_type": "Refurbished electronics",
+      "price": "90.00",
+      "brand": "Demo shop 13",
+      "purchase_date": "2026-09-01",
+      "multiplier": "0.000737871330",
+      "estimated_co2": "0.07",
+      "methodology": "epa-2022-inr-reference-v2",
+      "source_code": "334111"
+    },
+    {
+      "id": "demo-14",
+      "product_type": "Single-use household goods",
+      "price": "450.00",
+      "brand": "Demo shop 14",
+      "purchase_date": "2026-09-01",
+      "multiplier": "0.007365991379",
+      "estimated_co2": "3.31",
+      "methodology": "epa-2022-inr-reference-v2",
+      "source_code": "326160"
+    },
+    {
+      "id": "demo-15",
+      "product_type": "Reusable household goods",
+      "price": "800.00",
+      "brand": "Demo shop 15",
+      "purchase_date": "2026-09-01",
+      "multiplier": "0.007365991379",
+      "estimated_co2": "5.89",
+      "methodology": "epa-2022-inr-reference-v2",
+      "source_code": "326160"
+    }
+  ]
+}

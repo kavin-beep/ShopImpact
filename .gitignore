@@ -1,0 +1,30 @@
+.venv/
+__pycache__/
+*.pyc
+.streamlit/secrets.toml
+.streamlit/.private-*.tmp
+personal_data/
+
+# Private settings, local databases and downloaded recovery/backup files.
+.env
+.env.*
+!.env.example
+*.db
+*.db-*
+*.sqlite
+*.sqlite3
+*.sqlite3-*
+shopimpact-recovery-code*.txt
+shopimpact-personal*.json
+shopimpact-personal*.csv
+shopimpact-filtered*.csv
+
+# Disposable tools and editor/OS caches.
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+*.log
+*.tmp
+.DS_Store
+Thumbs.db

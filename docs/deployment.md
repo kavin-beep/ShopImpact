@@ -1,6 +1,8 @@
 # Public deployment
 
-This workspace now uses Neon PostgreSQL through ignored private settings. On 2 October 2026, connection, schema creation, registration, login, two-account isolation, persistence across new connections, stale-edit rejection and logout passed. Temporary QA accounts were deleted, and the locally served app's sign-in page loaded successfully. Public Streamlit Cloud deployment, server redeployment and provider backup restoration still need verification. Without hosted settings, the app uses local SQLite.
+Live app: [ShopImpact on Streamlit Community Cloud](https://shopimpact-duy7hphexgoshhqfexfmkt.streamlit.app/). The public sign-in page was checked in the browser after deployment: it loads without a startup error and shows Sign in, Create account and Recover account. This check did not create or modify any live account.
+
+This workspace uses Neon PostgreSQL through ignored private settings. On 2 October 2026, connection, schema creation, registration, login, two-account isolation, persistence across new connections, stale-edit rejection and logout passed locally with Neon. Temporary QA accounts were deleted. Full account workflows on the public deployment, server redeployment and provider backup restoration still need verification. Without hosted settings, the app uses local SQLite.
 
 ## Prerequisites
 

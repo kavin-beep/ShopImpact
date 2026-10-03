@@ -21,7 +21,7 @@ Current on 3 October 2026. The rubric totals 60 marks: planning 10, Python logic
 | app.py and requirements.txt | Present; dependencies installed and checked |
 | Detailed README | Overview, features, integration, run/deployment steps and screenshot evidence present; public links pending |
 | GitHub repository, naming and assessor access | Pending actual repository and student details |
-| Streamlit Cloud deployment | Neon PostgreSQL connected and account-isolation/persistence checks passed; public app deployment and end-to-end cloud checks pending |
+| Streamlit Cloud deployment | Public app deployed and sign-in page checked; live URL in README. Local Neon checks passed previously; full cloud account workflows, redeployment and backup restoration checks remain pending |
 | Submission PDF | Pending real student name, registration number, school, repository and live links |
 
 The real app has no demo workspace. Synthetic data belongs only in tests and in the separate browser QA database. Local accounts use SQLite; public mode requires PostgreSQL. Do not mark public deployment complete based on a local server or an example secrets file.

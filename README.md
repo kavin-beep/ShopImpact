@@ -8,6 +8,7 @@
 </p>
 
 <p align="center">
+  <a href="https://shopimpact-duy7hphexgoshhqfexfmkt.streamlit.app/">Open live app</a> ·
   <a href="#features">Explore features</a> ·
   <a href="#screenshots">See the app</a> ·
   <a href="#run-in-vs-code">Run locally</a> ·
@@ -22,7 +23,7 @@
 
 | Built with | Persistence | Checks | Release status |
 | :---: | :---: | :---: | :---: |
-| Python 3.12 · Streamlit | SQLite / Neon PostgreSQL | 79 tests passed locally · 3 Oct 2026 | Public deployment pending |
+| Python 3.12 · Streamlit | SQLite / Neon PostgreSQL | 79 tests passed locally · 3 Oct 2026 | Live on Streamlit Cloud |
 
 ShopImpact turns a purchase list into a useful shopping journal: record what you buy, see spending patterns, explore rough emissions estimates, and consider reuse or repair. It implements **Scenario 1** of the Year 1 Python Programming assessment.
 
@@ -158,11 +159,11 @@ The [repository readiness review](docs/repository-readiness.md) records the fina
 
 The [ten-page code and data guide](output/pdf/ShopImpact_10_Page_Explanation.pdf) is included for learning and review. Its test count describes the earlier 78-test snapshot; the current suite includes one additional regression test. It is separate from the final assessment submission document.
 
-See [deployment instructions](docs/deployment.md). Neon PostgreSQL was connected and verified on 2 October 2026: registration, login, account isolation, purchase persistence across new connections, conflicting-save protection and logout passed. Temporary QA accounts were deleted, and the actual app's sign-in page loaded with hosted settings. Public Streamlit Cloud deployment, redeployment persistence and provider backup restoration remain pending.
+See [deployment instructions](docs/deployment.md). Neon PostgreSQL was connected and verified on 2 October 2026: registration, login, account isolation, purchase persistence across new connections, conflicting-save protection and logout passed. Temporary QA accounts were deleted. ShopImpact is now deployed on Streamlit Community Cloud, and the public sign-in page has been checked in the browser. Full account workflows on the deployed app, redeployment persistence and provider backup restoration remain pending verification.
 
 Start hosted database setup with the [Neon walkthrough](docs/neon-setup.md) and private terminal helper.
 
-Public app URL: pending deployment.
+Public app: [Open ShopImpact](https://shopimpact-duy7hphexgoshhqfexfmkt.streamlit.app/).
 
 GitHub repository: [kavin-beep/ShopImpact](https://github.com/kavin-beep/ShopImpact).
 

@@ -182,9 +182,9 @@ Real participant feedback, assessor access and the final submission PDF remain p
 - [OWASP password storage](https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html)
 
 ## Credits
- - Name: Kavin.K
+ - Name: Kavin K
  - Grade: IBCP Y1
- - Name of Mentor: Syedali Beema S
+ - Name of Mentor: Syed Ali Beema S
  - Registration No: -
  - Name of School: Jain Vidyalaya
   

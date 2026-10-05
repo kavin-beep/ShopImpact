@@ -51,6 +51,18 @@ class AppTests(unittest.TestCase):
         self.assertEqual(app.metric[0].value, "INR 0.00")
         self.assertEqual(app.session_state["account_data"]["purchases"], [])
 
+    def test_deployment_refreshes_cached_rules_and_backup_version(self):
+        import logic
+        import storage
+        from unittest.mock import patch
+        with patch.object(logic, "VERSION", "epa-2022-inr-reference-v2"), patch.object(
+            storage, "VERSION", "epa-2022-inr-reference-v2"
+        ):
+            app = self.app()
+            self.assertFalse(app.exception)
+            self.assertEqual(logic.VERSION, "useeio-2024-inr-reference-v3")
+            self.assertEqual(storage.VERSION, logic.VERSION)
+
     def test_saved_estimates_change_only_after_confirmed_recalculation(self):
         from logic import make_purchase, VERSION
         from datetime import date

@@ -1,7 +1,20 @@
 """ShopImpact: run with python -m streamlit run app.py."""
 import json
+import importlib
+from pathlib import Path
 from datetime import date
 import streamlit as st
+import logic as shopping_rules
+import storage as backup_storage
+
+# Community Cloud may rerun app.py while retaining imported modules from the
+# previous deployment. Refresh the rules and backup bindings as one version.
+source_version = json.loads((Path(__file__).resolve().parent / "data/emission_sources.json").read_text(encoding="utf-8"))["methodology"]
+if shopping_rules.VERSION != source_version:
+    importlib.reload(shopping_rules)
+if backup_storage.VERSION != shopping_rules.VERSION:
+    importlib.reload(backup_storage)
+
 from logic import ROOT, CATALOG, SOURCE, VERSION, impact, make_purchase, month_records, summary, badges, update_purchase, recalculate_purchases
 from storage import export_json, export_csv, import_json
 from account_ui import require_account, save_account, sign_out, EMAIL_REQUEST_MESSAGE

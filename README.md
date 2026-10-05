@@ -145,6 +145,10 @@ Email verification and password-reset links are implemented. Gmail delivery is a
 
 The default command uses `turtle.TNavigator` with an SVG pen adapter. The optional preview uses `turtle.Turtle` and requires working Tk. The app displays the generated SVG when a qualifying choice exists; it is not a live browser Turtle animation. Desktop preview remains unverified in the bundled runtime. Confirm assessment acceptance of the SVG integration.
 
+### Appearance themes
+
+Open **Theme & animation** in the sidebar to choose **Normal** (the original look), **Day** (drifting clouds and a glowing sun), or **Night** (stars and occasional falling stars). Choices apply to the current browser session, including sign-in. Turn off **Animated scenery** for a still background. Device reduced-motion settings pause the scenery, and high contrast hides it.
+
 ## Verification
 
 ```powershell
@@ -177,6 +181,4 @@ Real participant feedback, assessor access and the final submission PDF remain p
 - [Python Turtle](https://docs.python.org/3/library/turtle.html)
 - [OWASP password storage](https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html)
 
-### Appearance themes
 
-Open **Theme & animation** in the sidebar to choose **Normal** (the original look), **Day** (drifting clouds and a glowing sun), or **Night** (stars and occasional falling stars). Choices apply to the current browser session, including sign-in. Turn off **Animated scenery** for a still background. Device reduced-motion settings pause the scenery, and high contrast hides it.

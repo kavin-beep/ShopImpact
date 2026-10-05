@@ -1,4 +1,6 @@
-# Emissions methodology
+# Earlier emissions methodology (archived v2)
+
+The current methodology is in [2026 update](2026-update.md). These notes document the previous release. Its source snapshots are retained under data/archive/; the current source and catalog files describe v3.
 
 Version: `epa-2022-inr-reference-v2`. Source retrieval: 1 October 2026.
 

@@ -51,6 +51,25 @@ class AppTests(unittest.TestCase):
         self.assertEqual(app.metric[0].value, "INR 0.00")
         self.assertEqual(app.session_state["account_data"]["purchases"], [])
 
+    def test_saved_estimates_change_only_after_confirmed_recalculation(self):
+        from logic import make_purchase, VERSION
+        from datetime import date
+        row = make_purchase("New clothing", 1000, "Saved shop", date.today())
+        row.update(methodology="epa-2022-inr-reference-v2", estimated_co2="1.53")
+        token = self.db.login("alice", "Testing only password 123")
+        saved = self.db.load(token)
+        self.db.save(token, [row], saved["settings"], saved["revision"])
+        app = self.app()
+        self.assertEqual(app.metric[1].value, "1.53 kg")
+        self.assertTrue(by_label(app.button, "Recalculate saved estimates").disabled)
+        app.checkbox(key="approve_recalculation").check().run()
+        by_label(app.button, "Recalculate saved estimates").click().run()
+        self.assertFalse(app.exception)
+        self.assertEqual(app.metric[1].value, "1.24 kg")
+        latest = self.db.load(token)
+        self.assertEqual(latest["purchases"][0]["methodology"], VERSION)
+        self.assertEqual(latest["settings"], saved["settings"])
+
     def test_invalid_email_configuration_does_not_block_accounts(self):
         # Misconfigured optional SMTP must not break sign-in or purchase saving.
         with patch.dict(os.environ, {"SHOPIMPACT_EMAIL_ENABLED": "true"}), patch(

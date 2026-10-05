@@ -1,0 +1,66 @@
+{
+  "methodology": "epa-2022-inr-reference-v2",
+  "retrieved": "2026-10-01",
+  "dataset": "US EPA Supply Chain GHG Emission Factors v1.3.0",
+  "dataset_url": "https://pasteur.epa.gov/uploads/10.23719/1531143/SupplyChainGHGEmissionFactors_v1.3.0_NAICS_CO2e_USD2022.csv",
+  "dataset_sha256": "6025a14c4fe16675735efba1683030e4d36011e3973f3c4261f8231aa69c002f",
+  "metadata_url": "https://catalog.data.gov/dataset/supply-chain-greenhouse-gas-emission-factors-v1-3-by-naics-6",
+  "factor_column": "Supply Chain Emission Factors with Margins",
+  "original_unit": "kg CO2e/2022 USD, purchaser price",
+  "fx_inr_per_usd_2022": "78.6044905829916",
+  "fx_url": "https://api.worldbank.org/v2/country/IND/indicator/PA.NUS.FCRF?date=2022&format=json",
+  "fx_description": "2022 official annual-average INR per USD; reference conversion, not a live exchange rate",
+  "limitations": "US sector proxies normalized at a fixed 2022 exchange rate. Current INR prices are not inflation-adjusted. Not India-specific carbon accounting or product lifecycle measurements.",
+  "rows": [
+    {
+      "2017 NAICS Code": "315990",
+      "2017 NAICS Title": "Apparel Accessories and Other Apparel Manufacturing",
+      "GHG": "All GHGs",
+      "Unit": "kg CO2e/2022 USD, purchaser price",
+      "Supply Chain Emission Factors without Margins": "0.06",
+      "Margins of Supply Chain Emission Factors": "0.06",
+      "Supply Chain Emission Factors with Margins": "0.12",
+      "Reference USEEIO Code": "315000"
+    },
+    {
+      "2017 NAICS Code": "316210",
+      "2017 NAICS Title": "Footwear Manufacturing",
+      "GHG": "All GHGs",
+      "Unit": "kg CO2e/2022 USD, purchaser price",
+      "Supply Chain Emission Factors without Margins": "0.222",
+      "Margins of Supply Chain Emission Factors": "0.06",
+      "Supply Chain Emission Factors with Margins": "0.282",
+      "Reference USEEIO Code": "316000"
+    },
+    {
+      "2017 NAICS Code": "334111",
+      "2017 NAICS Title": "Electronic Computer Manufacturing",
+      "GHG": "All GHGs",
+      "Unit": "kg CO2e/2022 USD, purchaser price",
+      "Supply Chain Emission Factors without Margins": "0.03",
+      "Margins of Supply Chain Emission Factors": "0.028",
+      "Supply Chain Emission Factors with Margins": "0.058",
+      "Reference USEEIO Code": "334111"
+    },
+    {
+      "2017 NAICS Code": "326160",
+      "2017 NAICS Title": "Plastics Bottle Manufacturing",
+      "GHG": "All GHGs",
+      "Unit": "kg CO2e/2022 USD, purchaser price",
+      "Supply Chain Emission Factors without Margins": "0.553",
+      "Margins of Supply Chain Emission Factors": "0.025",
+      "Supply Chain Emission Factors with Margins": "0.579",
+      "Reference USEEIO Code": "326160"
+    },
+    {
+      "2017 NAICS Code": "811490",
+      "2017 NAICS Title": "Other Personal and Household Goods Repair and Maintenance",
+      "GHG": "All GHGs",
+      "Unit": "kg CO2e/2022 USD, purchaser price",
+      "Supply Chain Emission Factors without Margins": "0.113",
+      "Margins of Supply Chain Emission Factors": "0",
+      "Supply Chain Emission Factors with Margins": "0.113",
+      "Reference USEEIO Code": "811400"
+    }
+  ]
+}

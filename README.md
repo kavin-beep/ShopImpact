@@ -23,7 +23,7 @@
 
 | Built with | Persistence | Checks | Release status |
 | :---: | :---: | :---: | :---: |
-| Python 3.12 · Streamlit | SQLite / Neon PostgreSQL | 79 tests passed locally · 3 Oct 2026 | Live on Streamlit Cloud |
+| Python 3.12 · Streamlit | SQLite / Neon PostgreSQL | 82 tests passed locally · 5 Oct 2026 | Live on Streamlit Cloud |
 
 ShopImpact turns a purchase list into a useful shopping journal: record what you buy, see spending patterns, explore rough emissions estimates, and consider reuse or repair. It implements **Scenario 1** of the Year 1 Python Programming assessment.
 
@@ -94,9 +94,9 @@ Open the URL printed in the terminal, normally http://localhost:8501. Create you
 
 ## Data and calculations
 
-The original invented factors have been replaced by US EPA Supply Chain GHG Emission Factors v1.3.0, in kg CO2e per 2022 USD. INR reference factors use the World Bank's 2022 annual-average exchange rate. Values, source rows, category mappings and source URLs are included in `data/emission_sources.json` and `data/product_catalog.json`.
+The 2026 refresh uses final USEEIO Supply Chain GHG Emission Factors v1.4.0, published in October 2025 by the Cornerstone Sustainability Data Initiative, with IPCC AR6 warming potentials and 2024 USD prices. INR factors use the matching World Bank 2024 annual-average exchange rate. Values, source rows, category mappings and source URLs are included in `data/emission_sources.json` and `data/product_catalog.json`.
 
-These are **rough reference estimates**. US sector averages, broad category mappings, a fixed historical exchange rate and unadjusted current prices are not a validated India-specific product footprint. New and reused versions use the same underlying factor; no unsupported reuse discount is invented. Read [methodology](docs/methodology.md).
+These are **rough reference estimates**. US sector averages, broad category mappings, a fixed historical exchange rate and unadjusted current prices are not a validated India-specific product footprint. New and reused versions use the same underlying factor; no unsupported reuse discount is invented. Read [current methodology and migration policy](docs/2026-update.md). Existing purchases keep their stored estimates until explicitly recalculated in How it works.
 
 ## Files and integration
 
@@ -151,13 +151,13 @@ The default command uses `turtle.TNavigator` with an SVG pen adapter. The option
 .\.venv\Scripts\python.exe -m unittest discover -s tests -v
 ```
 
-79 automated tests pass (3 October 2026), covering calculations, factor provenance, account isolation, persistence, recovery, rate limiting, concurrent saves, trends, filtering and interface workflows. Tests use disposable databases and do not write to real accounts. The 15-purchase synthetic fixture exists only for testing. See [test evidence](docs/testing.md).
+82 automated tests pass (5 October 2026), covering calculations, factor provenance, account isolation, persistence, recovery, rate limiting, concurrent saves, trends, filtering and interface workflows. Tests use disposable databases and do not write to real accounts. The 15-purchase synthetic fixture exists only for testing. See [test evidence](docs/testing.md).
 
 ## Deployment and assessment
 
 The [repository readiness review](docs/repository-readiness.md) records the final checks and remaining launch/submission work. Invalid optional email settings now leave sign-in, shopping and recovery-code access available; email reset buttons remain disabled until valid settings are provided.
 
-The [ten-page code and data guide](output/pdf/ShopImpact_10_Page_Explanation.pdf) is included for learning and review. Its test count describes the earlier 78-test snapshot; the current suite includes one additional regression test. It is separate from the final assessment submission document.
+The [ten-page code and data guide](output/pdf/ShopImpact_10_Page_Explanation.pdf) is included for learning and review. Its test count describes the earlier 78-test snapshot; the current suite has 82 tests. The guide and screenshots predate the refreshed design and v3 reference data; see the 2026 update for the current methodology. It is separate from the final assessment submission document.
 
 See [deployment instructions](docs/deployment.md). Neon PostgreSQL was connected and verified on 2 October 2026: registration, login, account isolation, purchase persistence across new connections, conflicting-save protection and logout passed. Temporary QA accounts were deleted. ShopImpact is now deployed on Streamlit Community Cloud, and the public sign-in page has been checked in the browser. Full account workflows on the deployed app, redeployment persistence and provider backup restoration remain pending verification.
 
@@ -171,8 +171,8 @@ Real participant feedback, assessor access and the final submission PDF remain p
 
 ## References
 
-- [EPA dataset](https://catalog.data.gov/dataset/supply-chain-greenhouse-gas-emission-factors-v1-3-by-naics-6)
-- [World Bank 2022 INR exchange rate](https://api.worldbank.org/v2/country/IND/indicator/PA.NUS.FCRF?date=2022&format=json)
+- [USEEIO v1.4 published dataset](https://zenodo.org/records/17202747)
+- [World Bank 2024 INR exchange rate](https://api.worldbank.org/v2/country/IND/indicator/PA.NUS.FCRF?date=2024&format=json)
 - [Streamlit database guidance](https://docs.streamlit.io/develop/concepts/connections/connecting-to-data)
 - [Python Turtle](https://docs.python.org/3/library/turtle.html)
 - [OWASP password storage](https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html)

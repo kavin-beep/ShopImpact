@@ -7,7 +7,8 @@ from uuid import uuid4
 
 ROOT = Path(__file__).resolve().parent
 CATALOG = json.loads((ROOT / "data/product_catalog.json").read_text(encoding="utf-8"))
-VERSION = "epa-2022-inr-reference-v2"
+VERSION = "useeio-2024-inr-reference-v3"
+SOURCE = json.loads((ROOT / "data/emission_sources.json").read_text(encoding="utf-8"))
 
 
 def money(value):
@@ -74,6 +75,12 @@ def update_purchase(records, replacement):
     if not any(p["id"] == replacement["id"] for p in records):
         raise ValueError("That purchase no longer exists.")
     return [replacement if p["id"] == replacement["id"] else p for p in records]
+
+
+def recalculate_purchases(records):
+    """Build a new validated history without changing the saved/original list."""
+    return [make_purchase(p["product_type"], p["price"], p["brand"], p["purchase_date"], p["id"])
+            for p in records]
 
 
 def demo_records(today=None):

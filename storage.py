@@ -16,7 +16,7 @@ def import_json(raw, allow_legacy=False):
         data = json.loads(raw)
     except (ValueError, UnicodeError, RecursionError):
         raise ValueError("This file is not valid JSON.") from None
-    versions = [VERSION, "illustrative-inr-v1"] if allow_legacy else [VERSION]
+    versions = [VERSION, "epa-2022-inr-reference-v2", "illustrative-inr-v1"] if allow_legacy else [VERSION]
     if not isinstance(data, dict) or data.get("version") not in versions or data.get("currency") != "INR":
         raise ValueError("Choose a ShopImpact INR backup using the current methodology.")
     rows = data.get("purchases")
@@ -26,6 +26,8 @@ def import_json(raw, allow_legacy=False):
     for row in rows:
         if not isinstance(row, dict):
             raise ValueError("Every purchase must be a record.")
+        if row.get("methodology", VERSION) != VERSION and not allow_legacy:
+            raise ValueError("This backup includes older estimates. Allow an older backup to recalculate them using the latest reference data.")
         try:
             record_id = row["id"]
             if not isinstance(record_id, str) or not record_id or len(record_id) > 100 or record_id in ids:

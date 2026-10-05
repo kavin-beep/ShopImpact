@@ -2,7 +2,7 @@
 import json
 from datetime import date
 import streamlit as st
-from logic import ROOT, CATALOG, impact, make_purchase, month_records, summary, badges, update_purchase
+from logic import ROOT, CATALOG, SOURCE, VERSION, impact, make_purchase, month_records, summary, badges, update_purchase, recalculate_purchases
 from storage import export_json, export_csv, import_json
 from account_ui import require_account, save_account, sign_out, EMAIL_REQUEST_MESSAGE
 from email_delivery import queue_email_action, queue_notice
@@ -73,8 +73,11 @@ with st.sidebar:
 
 apply_styles(high_contrast)
 
-st.markdown('<div class="si-eyebrow">YOUR CONSCIOUS SHOPPING JOURNAL</div>', unsafe_allow_html=True)
-st.title("A little more mindful, every month.")
+st.markdown('''<section class="si-hero">
+<span class="si-chip">2026 refresh</span><span class="si-chip">Private shopping journal</span>
+<h1>A little more mindful, every month.</h1>
+<p>Know where your money goes. Explore your estimated impact. Find a thoughtful next step.</p>
+</section>''', unsafe_allow_html=True)
 if st.session_state.get("account_created"):
     st.success("Your account is ready. Welcome to ShopImpact!")
     with st.expander("Save your account recovery code"):
@@ -87,7 +90,10 @@ if st.session_state.get("account_created"):
             st.session_state.pop("recovery_code", None)
             st.rerun()
 st.write("Track your shopping, explore alternatives, and celebrate your progress.")
-st.caption("INR · EPA reference factors · Rough US-sector proxy estimates, not product measurements. See How it works for source and currency assumptions.")
+st.caption("INR · USEEIO v1.4 reference factors · Sources reviewed 5 October 2026. Rough US-sector estimates, not product measurements.")
+older_estimates = sum(p.get("methodology") != VERSION for p in records)
+if older_estimates:
+    st.info(f"{older_estimates} purchases retain their earlier reference estimates. New or edited entries use the updated data. Recalculate your history in How it works to compare all entries on the same basis.")
 
 if st.session_state.get("personal"):
     with st.expander("Save entries from your previous session"):
@@ -267,7 +273,7 @@ with history:
     d2.download_button("Download CSV report", export_csv(records), f"shopimpact-{key}.csv", "text/csv")
     uploaded = st.file_uploader("Restore a ShopImpact JSON backup", type=["json"], key=f"upload_{key}")
     confirm_restore = st.checkbox("Replace this workspace with the backup", key=f"restore_confirm_{key}")
-    legacy = st.checkbox("Allow an older backup and recalculate its estimates", help="Old illustrative estimates will be replaced with the current sourced reference factors.")
+    legacy = st.checkbox("Allow an older backup and recalculate its estimates", help="Earlier reference or illustrative estimates will be replaced with the current sourced factors.")
     if st.button("Restore backup", disabled=uploaded is None or not confirm_restore):
         try:
             restored = import_json(uploaded.getvalue(), allow_legacy=legacy)
@@ -279,12 +285,28 @@ with history:
 with about:
     st.subheader("An honest estimate, a helpful habit")
     st.write("Making, packaging and delivering products can release greenhouse gases. CO₂e means carbon dioxide equivalent: a common measure of their combined warming effect. ShopImpact uses the product category and price as clues to estimate that impact; spending itself does not directly create emissions.")
-    st.write("ShopImpact uses price × category multiplier to estimate spending-related greenhouse gas emissions. Factors come from the US EPA's 2022 supply-chain dataset, version 1.3, including supply-chain margins.")
+    st.write("ShopImpact uses price × category multiplier to estimate spending-related greenhouse gas emissions. The updated factors come from USEEIO Supply Chain GHG Emission Factors v1.4.0, published by the Cornerstone Sustainability Data Initiative in October 2025, including supply-chain margins and IPCC AR6 warming potentials.")
     st.write("The base currency is INR. A higher price can increase this estimate without changing physical emissions. Free items return zero in this model; that does not mean they have zero environmental impact.")
-    st.write("The reference conversion is 78.6044905829916 INR per USD, the World Bank's annual average for 2022. It is not a live exchange rate. Prices are not inflation-adjusted; US sector averages may differ substantially from Indian supply chains and individual products. Treat results as rough screening estimates, not certified carbon accounting.")
+    st.write(f"The reference conversion is {SOURCE['fx_inr_per_usd']} INR per USD, the World Bank's annual average for {SOURCE['fx_year']}, matching the factors' 2024 dollar price basis. It is not a live exchange rate. Current prices are not inflation-adjusted; US sector averages may differ substantially from Indian products. Treat results as rough estimates, not certified carbon accounting.")
+    with st.expander("Data freshness and reference years"):
+        st.write("Reviewed 5 October 2026. A 2026 refresh means the latest verified source release available at review, not measured 2026 product emissions.")
+        st.write(f"Factor release: v1.4.0 · Published {SOURCE['published']} · Dollar price basis: 2024 · Warming method: {SOURCE['gwp']}.")
+        latest_fx = SOURCE["latest_available_annual_fx"]
+        st.write(f"Latest available World Bank annual rate at review: {latest_fx['year']} · {latest_fx['inr_per_usd']} INR/USD. This is shown for context; calculations use the matching 2024 rate. No full-year 2026 rate is available yet.")
+        st.caption("Data is a checked snapshot, not a live feed. Previous source files are archived for reproducibility.")
     st.write("Badges reflect your logged choices, not a certification of sustainability. Reused and new versions use the same category factor; no unsupported reuse discount is applied. Brand links document reuse, repair or reusable-product options, not independent certification or endorsements.")
     st.dataframe([{"Category": name, "Reference kg CO₂e per INR": float(info["multiplier"]), "EPA NAICS": info["source_code"], "Mapping limitations": info["mapping_note"]} for name, info in CATALOG.items()], hide_index=True)
-    st.markdown("[EPA source dataset](https://catalog.data.gov/dataset/supply-chain-greenhouse-gas-emission-factors-v1-3-by-naics-6) · [World Bank reference exchange rate](https://api.worldbank.org/v2/country/IND/indicator/PA.NUS.FCRF?date=2022&format=json)")
+    st.markdown("[Published USEEIO dataset](https://zenodo.org/records/17202747) · [World Bank reference exchange rate](https://api.worldbank.org/v2/country/IND/indicator/PA.NUS.FCRF?date=2024&format=json)")
+    if older_estimates:
+        with st.expander("Update my saved estimates"):
+            st.write("Download a JSON backup first. Recalculation preserves purchase IDs, dates, brands and prices, and updates estimates and methodology. Badges and totals may change. Your goals stay the same.")
+            approve_recalculation = st.checkbox("Use the updated reference data for all my purchases", key="approve_recalculation")
+            if st.button("Recalculate saved estimates", disabled=not approve_recalculation):
+                try:
+                    if save_account(service, account, purchases=recalculate_purchases(records)):
+                        st.rerun()
+                except ValueError as error:
+                    st.error(str(error))
     st.write("Purchases and preferences are saved separately for each account. Passwords are protected with Argon2id hashing. The database administrator can access purchase data; it is not end-to-end encrypted. Sign out on a shared computer. Sessions expire after 12 hours and a page refresh requires another sign-in.")
     st.write("Dates may include planned purchases. Your dashboard groups all entries by their selected purchase month and year.")
     st.caption("Built with Python, Streamlit, datetime, lists, dictionaries, and genuine Turtle-generated artwork.")

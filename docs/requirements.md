@@ -16,7 +16,7 @@ Current on 3 October 2026. The rubric totals 60 marks: planning 10, Python logic
 | 10–15 varied purchases for testing | 15 labelled synthetic records in tests; none preloaded for real users |
 | Creative additions | Private accounts, permanent saving, recovery, goals, search, comparison, backups, tips, contrast and deletion |
 | Email account features | Email/password login working; verification and reset links implemented and tested, awaiting private Gmail setup and actual inbox delivery |
-| Thorough testing | 79 automated tests pass; actual browser review and screenshots recorded |
+| Thorough testing | 82 automated tests pass; actual browser review and screenshots recorded |
 | Genuine usability feedback and refinement | Feedback template prepared; real participant feedback still required |
 | app.py and requirements.txt | Present; dependencies installed and checked |
 | Detailed README | Overview, features, integration, run/deployment steps and screenshot evidence present; public links pending |

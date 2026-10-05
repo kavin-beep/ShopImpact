@@ -184,7 +184,7 @@ Real participant feedback, assessor access and the final submission PDF remain p
 ## Credits
  - Name: Kavin.K
  - Grade: IBCP Y1
- - Name of Mentor: Syedalibeema s
+ - Name of Mentor: Syedali Beema S
  - Registration No: -
- - Name of School: JainVidyalaya
+ - Name of School: Jain Vidyalaya
   

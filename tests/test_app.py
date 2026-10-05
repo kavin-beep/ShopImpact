@@ -51,6 +51,25 @@ class AppTests(unittest.TestCase):
         self.assertEqual(app.metric[0].value, "INR 0.00")
         self.assertEqual(app.session_state["account_data"]["purchases"], [])
 
+    def test_themes_work_before_sign_in_and_preserve_account_data(self):
+        app = AppTest.from_file(str(APP), default_timeout=30).run()
+        app.selectbox(key="visual_theme").select("Night").run()
+        self.assertFalse(app.exception)
+        self.assertTrue(any("si-night" in item.value for item in app.markdown))
+        app.checkbox(key="scenery_motion").uncheck().run()
+        self.assertTrue(any("si-night si-paused" in item.value for item in app.markdown))
+        app.text_input(key="login_name").set_value("alice")
+        app.text_input(key="login_password").set_value("Testing only password 123")
+        by_label(app.button, "Sign in").click().run()
+        self.assertEqual(app.selectbox(key="visual_theme").value, "Night")
+        original = app.session_state["account_data"].copy()
+        for theme in ["Day", "Normal", "Night"]:
+            app.selectbox(key="visual_theme").select(theme).run()
+            self.assertFalse(app.exception)
+            self.assertEqual(app.session_state["account_data"], original)
+        app.checkbox(key="contrast").check().run()
+        self.assertTrue(any(".si-scenery {display:none;}" in item.value for item in app.markdown))
+
     def test_deployment_refreshes_cached_rules_and_backup_version(self):
         import logic
         import storage

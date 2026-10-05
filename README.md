@@ -23,7 +23,7 @@
 
 | Built with | Persistence | Checks | Release status |
 | :---: | :---: | :---: | :---: |
-| Python 3.12 · Streamlit | SQLite / Neon PostgreSQL | 83 tests passed locally · 5 Oct 2026 | Live on Streamlit Cloud |
+| Python 3.12 · Streamlit | SQLite / Neon PostgreSQL | 84 tests passed locally · 5 Oct 2026 | Live on Streamlit Cloud |
 
 ShopImpact turns a purchase list into a useful shopping journal: record what you buy, see spending patterns, explore rough emissions estimates, and consider reuse or repair. It implements **Scenario 1** of the Year 1 Python Programming assessment.
 
@@ -151,13 +151,13 @@ The default command uses `turtle.TNavigator` with an SVG pen adapter. The option
 .\.venv\Scripts\python.exe -m unittest discover -s tests -v
 ```
 
-83 automated tests pass (5 October 2026), covering calculations, factor provenance, account isolation, persistence, recovery, rate limiting, concurrent saves, trends, filtering and interface workflows. Tests use disposable databases and do not write to real accounts. The 15-purchase synthetic fixture exists only for testing. See [test evidence](docs/testing.md).
+84 automated tests pass (5 October 2026), covering calculations, factor provenance, account isolation, persistence, recovery, rate limiting, concurrent saves, trends, filtering and interface workflows. Tests use disposable databases and do not write to real accounts. The 15-purchase synthetic fixture exists only for testing. See [test evidence](docs/testing.md).
 
 ## Deployment and assessment
 
 The [repository readiness review](docs/repository-readiness.md) records the final checks and remaining launch/submission work. Invalid optional email settings now leave sign-in, shopping and recovery-code access available; email reset buttons remain disabled until valid settings are provided.
 
-The [ten-page code and data guide](output/pdf/ShopImpact_10_Page_Explanation.pdf) is included for learning and review. Its test count describes the earlier 78-test snapshot; the current suite has 83 tests. The guide and screenshots predate the refreshed design and v3 reference data; see the 2026 update for the current methodology. It is separate from the final assessment submission document.
+The [ten-page code and data guide](output/pdf/ShopImpact_10_Page_Explanation.pdf) is included for learning and review. Its test count describes the earlier 78-test snapshot; the current suite has 84 tests. The guide and screenshots predate the refreshed design and v3 reference data; see the 2026 update for the current methodology. It is separate from the final assessment submission document.
 
 See [deployment instructions](docs/deployment.md). Neon PostgreSQL was connected and verified on 2 October 2026: registration, login, account isolation, purchase persistence across new connections, conflicting-save protection and logout passed. Temporary QA accounts were deleted. ShopImpact is now deployed on Streamlit Community Cloud, and the public sign-in page has been checked in the browser. Full account workflows on the deployed app, redeployment persistence and provider backup restoration remain pending verification.
 
@@ -176,3 +176,7 @@ Real participant feedback, assessor access and the final submission PDF remain p
 - [Streamlit database guidance](https://docs.streamlit.io/develop/concepts/connections/connecting-to-data)
 - [Python Turtle](https://docs.python.org/3/library/turtle.html)
 - [OWASP password storage](https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html)
+
+### Appearance themes
+
+Open **Theme & animation** in the sidebar to choose **Normal** (the original look), **Day** (drifting clouds and a glowing sun), or **Night** (stars and occasional falling stars). Choices apply to the current browser session, including sign-in. Turn off **Animated scenery** for a still background. Device reduced-motion settings pause the scenery, and high contrast hides it.

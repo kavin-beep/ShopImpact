@@ -21,10 +21,14 @@ from account_ui import require_account, save_account, sign_out, EMAIL_REQUEST_ME
 from email_delivery import queue_email_action, queue_notice
 from accounts import AccountError
 from sqlalchemy.exc import SQLAlchemyError
-from ui import apply_styles
+import ui
+# Refresh presentation code when Community Cloud retains an earlier module.
+importlib.reload(ui)
+from ui import apply_styles, theme_controls
 from insights import monthly_trend, month_insights, filter_purchases
 
 st.set_page_config(page_title="ShopImpact | Conscious shopping", page_icon="🌿", layout="wide")
+theme_controls()
 apply_styles()
 service, account, mailer = require_account()
 if "tip_index" not in st.session_state:

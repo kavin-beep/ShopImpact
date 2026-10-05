@@ -4,7 +4,7 @@ Verified on 3 October 2026 with Python 3.12.14 and Streamlit 1.55.0.
 
 ## Automated checks
 
-All 83 tests pass using `python -m unittest discover -s tests -v`. `python -m pip check` reports no broken requirements.
+All 84 tests pass using `python -m unittest discover -s tests -v`. `python -m pip check` reports no broken requirements.
 
 Twenty core tests cover Decimal arithmetic, validation, month/year boundaries, totals, badge thresholds, category alternatives, source-factor derivation, no invented reuse discount, backup validation, explicit legacy migration and CSV formula neutralization. Sixteen account tests cover isolation, persistence across a new database connection, salted hashes, weak/duplicate credentials, lockout, conflicting saves, recovery rotation, session revocation/expiry, password-reset races during login, deletion and rejection of SQLite in public mode. Thirteen Streamlit tests cover the login gate, empty state, invalid input, purchase editing/deletion, persistent preferences, registration, filtered edit choices and immediate goal changes in Insights.
 
@@ -50,4 +50,4 @@ Collect real feedback with `docs/usability-feedback.md`, record improvements, an
 
 ## 2026 data and design update
 
-On 5 October 2026, all 83 tests passed. Three new checks cover older-backup opt-in, immutable recalculation and confirmation before changing saved estimates. See [2026 update](2026-update.md) for source evidence and compatibility. Earlier browser evidence and PDF guides describe the prior release.
+On 5 October 2026, all 84 tests passed. Three new checks cover older-backup opt-in, immutable recalculation and confirmation before changing saved estimates. See [2026 update](2026-update.md) for source evidence and compatibility. Earlier browser evidence and PDF guides describe the prior release.

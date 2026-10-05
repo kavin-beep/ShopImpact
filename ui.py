@@ -2,6 +2,22 @@
 import streamlit as st
 
 
+def theme_controls():
+    """Theme and animation choices remain in this browser session."""
+    with st.sidebar:
+        with st.expander("Theme & animation", expanded=True):
+            theme = st.selectbox("Theme", ["Normal", "Day", "Night"], key="visual_theme")
+            motion = st.checkbox("Animated scenery", value=True, key="scenery_motion",
+                                 help="Your device's reduced-motion setting also pauses the scenery.")
+            st.caption("Applies to this session, including sign-in.")
+    if theme != "Normal":
+        scene = "night" if theme == "Night" else "day"
+        paused = "" if motion else " si-paused"
+        stars = "".join(f'<i class="si-star si-star-{n}"></i>' for n in range(1, 6))
+        content = stars if scene == "night" else '<i class="si-sun"></i><i class="si-cloud si-cloud-1"></i><i class="si-cloud si-cloud-2"></i>'
+        st.markdown(f'<div class="si-scenery si-{scene}{paused}" aria-hidden="true">{content}</div>', unsafe_allow_html=True)
+
+
 def apply_styles(high_contrast=False):
     background = "#ffffff" if high_contrast else "#F5F7F3"
     surface = "#ffffff" if high_contrast else "#FFFFFF"
@@ -71,6 +87,76 @@ def apply_styles(high_contrast=False):
         .stApp [data-testid="stMetricValue"] {{font-size:1.2rem;}}
     }}
     </style>""", unsafe_allow_html=True)
+    theme = st.session_state.get("visual_theme", "Normal")
+    if theme == "Night" and not high_contrast:
+        st.markdown("""<style>
+        .stApp {--si-bg:#0B1427;--si-surface:#17243A;--si-muted:#BFCDE0;--si-ink:#EDF3FA;--si-line:#3C4E68;
+            background:var(--si-bg);color:var(--si-ink);color-scheme:dark;}
+        .stApp [data-testid="stSidebar"] {background:#111E32;}
+        .stApp h1,.stApp h2,.stApp h3,.stApp label,.stApp p,
+        .stApp [data-testid="stMetricValue"],.stApp [data-testid="stMarkdownContainer"] {color:var(--si-ink);}
+        .stApp [data-testid="stHeader"] {background:#0B1427;}
+        .stApp [data-baseweb="input"],.stApp [data-baseweb="input"] input,
+        .stApp [data-baseweb="textarea"],.stApp textarea,.stApp [data-baseweb="select"] > div,
+        .stApp [data-baseweb="base-input"],.stApp [data-testid="stNumberInput"] button {
+            background:#1B2D47;color:#EDF3FA;border-color:#526681;}
+        .stApp input::placeholder,.stApp textarea::placeholder {color:#BFCDE0;}
+        .stApp button {background:#20334F;color:#EDF3FA;border-color:#526681;}
+        .stApp button p,.stApp [data-baseweb="tab"] {color:#EDF3FA;}
+        .stApp button[kind="primary"],.stApp button[kind="primary"] p {background:#28644F;color:#fff;}
+        .stApp .si-chip,.stApp [data-baseweb="tab"][aria-selected="true"] {background:#284936;color:#E4F3DA;}
+        .stApp [data-testid="stExpander"] {background:var(--si-surface);}
+        .stApp [data-testid="stExpander"] summary {background:var(--si-surface);color:var(--si-ink);}
+        .stApp [data-testid="stExpander"] summary p {color:var(--si-ink);}
+        .stApp [data-testid="stAlert"] {background:#1B2D47;color:#EDF3FA;}
+        .stApp [data-testid="stDataFrame"],.stApp [data-testid="stTable"] {background:#17243A;color:#EDF3FA;}
+        .stApp a {color:#A8D5FF;}
+        .stApp [data-testid="stCaptionContainer"] p,.stApp .si-hero p {color:var(--si-muted);}
+        </style>""", unsafe_allow_html=True)
+    elif theme == "Day" and not high_contrast:
+        st.markdown("""<style>
+        .stApp {--si-bg:#EDF7FC;--si-surface:#FFFFFF;--si-line:#CFDFE6;
+            background:linear-gradient(150deg,#E2F3FF,#F6FAEE 75%);}
+        .stApp [data-testid="stSidebar"] {background:#EAF3EE;}
+        .stApp .si-hero {background:linear-gradient(120deg,#FFFFFF,#F2F9E7);}
+        </style>""", unsafe_allow_html=True)
+    # Fixed, non-interactive scenery lives behind opaque content cards.
+    st.markdown("""<style>
+    .si-scenery {position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:0;}
+    .stApp [data-testid="stMainBlockContainer"] {position:relative;z-index:1;}
+    .si-night {background-image:radial-gradient(1px 1px at 18% 15%,#CCDFFF 98%,transparent),
+        radial-gradient(1px 1px at 62% 28%,#CCDFFF 98%,transparent),
+        radial-gradient(1px 1px at 85% 60%,#CCDFFF 98%,transparent);background-size:270px 230px;}
+    .si-star {position:absolute;width:100px;height:2px;background:linear-gradient(90deg,transparent,#DAE8FF);
+        opacity:0;transform:rotate(35deg);border-radius:50%;}
+    .si-star-1 {left:12%;top:8%;--delay:0s;}
+    .si-star-2 {left:48%;top:16%;--delay:4s;}
+    .si-star-3 {left:70%;top:4%;--delay:8s;}
+    .si-star-4 {left:25%;top:35%;--delay:12s;}
+    .si-star-5 {left:55%;top:48%;--delay:16s;}
+    .si-sun {position:absolute;right:9%;top:10%;width:100px;height:100px;border-radius:50%;
+        background:#FFE3A1;box-shadow:0 0 65px 28px #FFE3A144;opacity:.65;}
+    .si-cloud {position:absolute;width:190px;height:45px;border-radius:80px;background:#FFFFFF;opacity:.45;}
+    .si-cloud::before,.si-cloud::after {content:"";position:absolute;background:inherit;border-radius:50%;}
+    .si-cloud::before {width:80px;height:80px;left:30px;bottom:0;}
+    .si-cloud::after {width:100px;height:100px;right:25px;bottom:0;}
+    .si-cloud-1 {left:8%;top:18%;}
+    .si-cloud-2 {left:55%;top:64%;}
+    @media(prefers-reduced-motion:no-preference) {
+        .si-star {animation:si-fall 22s linear infinite;animation-delay:var(--delay);}
+        .si-cloud {animation:si-drift 55s ease-in-out infinite alternate;}
+        .si-cloud-2 {animation-delay:-25s;}
+        .si-sun {animation:si-glow 12s ease-in-out infinite alternate;}
+        @keyframes si-fall {0%,6% {opacity:0;transform:translate(0,0) rotate(35deg);}
+            8% {opacity:.65;} 16% {opacity:0;transform:translate(340px,238px) rotate(35deg);} 100% {opacity:0;}}
+        @keyframes si-drift {to {transform:translateX(120px);}}
+        @keyframes si-glow {to {transform:scale(1.06);opacity:.85;}}
+    }
+    .si-paused *, .si-paused *::before,.si-paused *::after {animation:none!important;}
+    @media(prefers-reduced-motion:reduce) {.si-scenery * {animation:none!important;}}
+    </style>""", unsafe_allow_html=True)
+    if high_contrast:
+        st.markdown('<style>.si-scenery {display:none;}</style>', unsafe_allow_html=True)
 
 
 def brand_panel():

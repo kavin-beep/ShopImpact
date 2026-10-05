@@ -8,6 +8,7 @@
 </p>
 
 <p align="center">
+  (story board link here)
   <a href="https://shopimpact-duy7hphexgoshhqfexfmkt.streamlit.app/">Open live app</a> ·
   <a href="#features">Explore features</a> ·
   <a href="#screenshots">See the app</a> ·
@@ -172,7 +173,8 @@ Public app: [Open ShopImpact](https://shopimpact-duy7hphexgoshhqfexfmkt.streamli
 GitHub repository: [kavin-beep/ShopImpact](https://github.com/kavin-beep/ShopImpact).
 
 Real participant feedback, assessor access and the final submission PDF remain pending. See [requirements](docs/requirements.md) and [feedback template](docs/usability-feedback.md). Screenshots use an isolated QA account and fictional input, not a preloaded demo workspace.
-
+## Testing
+--
 ## References
 
 - [USEEIO v1.4 published dataset](https://zenodo.org/records/17202747)

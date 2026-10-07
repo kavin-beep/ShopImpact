@@ -8,7 +8,7 @@
 </p>
 
 <p align="center">
-  (story board link here)
+  <a href="https://canva.link/v8iiqeb2k0bxb1g">Open Canva Storyboard</a> .
   <a href="https://shopimpact-duy7hphexgoshhqfexfmkt.streamlit.app/">Open live app</a> ·
   <a href="#features">Explore features</a> ·
   <a href="#screenshots">See the app</a> ·
